@@ -33,7 +33,7 @@ const ApiDetails = () => {
     return (
         <div className="mainDiv">
             <table>
-                <tbody>
+                <thead>
                     <th>
                         <td>
                             Id
@@ -48,8 +48,10 @@ const ApiDetails = () => {
                     <th>
                         <td>title</td>
                     </th>
+                </thead>
 
-                    {apiData.map((item) => (
+                {apiData.map((item) => (
+                    <tbody>
                         <tr>
                             <td>
                                 {item.id}
@@ -64,9 +66,8 @@ const ApiDetails = () => {
                                 {item.title}
                             </td>
                         </tr>
-
-                    ))}
-                </tbody>
+                    </tbody>
+                ))}
             </table>
             <div>
                 <button onClick={() => nexthandleClick()}>next page</button>

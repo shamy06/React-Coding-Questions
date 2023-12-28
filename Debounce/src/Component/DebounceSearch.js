@@ -1,42 +1,27 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const DebounceSearch = () => {
-    const [nestedObjected, setNestedObject] = useState({
-        taxi: "a car licensed to transport passengers in return for payment of a fare",
-        food: {
-            sushi:
-                "a traditional Japanese dish of prepared rice accompanied by seafood and vegetables",
-            apple: {
-                Honeycrisp:
-                    "an apple cultivar developed at the MAES Horticultural Research Center",
-                Fuji: "an apple cultivar developed by growers at Tohoku Research Station",
-            },
-        },
-    });
-    
-    const RecursiveFunction = (data) => {
-        return Object.entries(data).map(([key, value]) => {
-            if (typeof value === 'object') {
-                return (
-                    <div key={key}>
-                        <strong>{key}</strong>: {RecursiveFunction(value)}
-                    </div>
-                );
-            } else {
-                return (
-                    <div key={key}>
-                        <strong>{key}</strong>: {value}
-                    </div>
-                );
-            }
-        })
+    const [inputValue,setInputValue] =useState("");
+    const[debouncedInput, setDebouncedInput] =useState("");
+
+    const handleChange=(event)=>{
+        const {value} =event.target;
+        setInputValue(value);
     }
 
-    return (
+    useEffect(()=>{
+        const timeOut=setTimeout(()=>{
+            setDebouncedInput(inputValue);
+            console.log({inputValue})
+        },500);
+        return ()=>clearTimeout(timeOut);
+    },[inputValue,500])
+
+    return(
         <>
-            <RecursiveFunction obj={nestedObjected} />
+        <h1>Debouncing Input</h1>
+        <input type="text" onChange={handleChange} value={inputValue}/>
         </>
     )
 }
-
 export default DebounceSearch;

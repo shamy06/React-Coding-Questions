@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import UserData from './Component/UserData';
+import ApiDetails from './Component/ApiDetails';
 
 function App() {
   return (
     <>
-    <UserData/>
+    <ApiDetails/>
     </>
   );
 }

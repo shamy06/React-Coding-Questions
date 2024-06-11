@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import ApiDetails from './Component/ApiDetails';
+import Parent from './Component/Parent';
 
 function App() {
   return (
     <>
-    <ApiDetails/>
+    <Parent/>
     </>
   );
 }
